@@ -8,8 +8,11 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
     config.extraPlugins = 'uploadimage';
-	config.filebrowserImageUploadUrl = '/liulan/';
-    config.filebrowserBrowseUrl =  '/liulan/';
+
+    //暂时不做文件上传支持
+	//config.filebrowserImageUploadUrl = '/liulan/';
+    //config.filebrowserBrowseUrl =  '/liulan/';
+
 	config.uploadUrl = '/uploader/';
 
 
