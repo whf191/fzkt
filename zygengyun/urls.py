@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from gengyun.views import  gengyun_index,gengyun_zhongzi,zhongzi_open
+from gengyun.views import  gengyun_index,gengyun_zhongzi,zhongzi_open,uploader
 from gengyun.houtai_views import  gengyun_login,gengyun_denglu,gengyun_logout,houtai_admin,\
     houtai_admin_grxx,houtai_admin_gyzz,houtai_admin_wdgy,houtai_fayan,zhongzi_fayan,zhishidian_fayan
 
@@ -37,6 +37,9 @@ url(r'^houtai_fayan/',houtai_fayan),
 url(r'^zhongzi_fayan/',zhongzi_fayan),
 
 url(r'^zhishidian_fayan/',zhishidian_fayan),
+
+url(r'^uploader/',uploader),
+
 
 
 
