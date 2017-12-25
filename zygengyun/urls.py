@@ -20,6 +20,9 @@ from gengyun.views import  gengyun_index,gengyun_zhongzi,zhongzi_open,uploader
 from gengyun.houtai_views import  gengyun_login,gengyun_denglu,gengyun_logout,houtai_admin,\
     houtai_admin_grxx,houtai_admin_gyzz,houtai_admin_wdgy,houtai_fayan,zhongzi_fayan,zhishidian_fayan
 
+from gengyun.doclistviews import get_doc_count
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^gengyun_index/',gengyun_index),
@@ -40,7 +43,7 @@ url(r'^zhishidian_fayan/',zhishidian_fayan),
 
 url(r'^uploader/',uploader),
 
-
+url(r'^zhuti/',get_doc_count),
 
 
 

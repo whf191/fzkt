@@ -7,6 +7,11 @@
       <!-- 引入 Bootstrap -->
       <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.1.0/jquery-confirm.min.css">
+
+          <script src="https://code.jquery.com/jquery.js"></script>
+   <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.1.0/jquery-confirm.min.js"></script>
+
    </head>
    <body>
    <!--  导航部门 container -fluid  -->
@@ -130,7 +135,39 @@
                         </div>
                         <ul class="list-group">
                             {% for t in huoqu_mouye_jilu.object_list %}
-                            <li  style="overflow:auto;" class="list-group-item"><a href="/gengyun_zhongzi/?pk={{t.id}}"  > {{ t.name }} </a>&nbsp;&nbsp;&nbsp;&nbsp;<span  style="float:right;">{{t.user_id.first_name}}     开垦日:{{ t.create_date  }}</span></li>
+                            <li  style="overflow:auto;" class="list-group-item"><a href="/gengyun_zhongzi/?pk={{t.id}}"  > {{ t.name }} </a>&nbsp;&nbsp;&nbsp;<span id="{{t.id}}"></span>  &nbsp;  <span  style="float:right;">{{t.user_id.first_name}}     开垦日:{{ t.create_date  }}</span></li>
+                            <!--<script>-->
+                                <!--$(document).ready(-->
+                                <!--function(){-->
+                                        <!--function tid(pk){-->
+                                                <!--var getpk = $('#' + pk);-->
+                                                <!--getpk.css("color","red");-->
+                                                <!--$.get("/zhuti/?zhuti=zhuti&pk=" + pk , function(data,status){-->
+                                                         <!--var data = data;-->
+                                                         <!--var data2= "";-->
+                                                         <!--data2 = data.split("|");-->
+                                                         <!--if (data2[0] == "0" ){-->
+                                                              <!--getpk.text("老师发布了(" + data2[1] + ")" + "个教学主题");-->
+                                                         <!--}-->
+                                                          <!--else {-->
+                                                          <!--getpk.css("color","black");-->
+                                                          <!--getpk.text("还没有..." );-->
+
+                                                          <!--}-->
+
+                                                <!--}  );-->
+
+
+                                                 <!--console.log(getpk);-->
+                                        <!--};-->
+                                       <!--tid("{{t.id}}");-->
+
+                                <!--}-->
+                              <!--);-->
+
+                            <!--</script>-->
+
+
                             {% endfor %}
                         </ul>
 
@@ -182,9 +219,7 @@
 
 </div>
 
-   <script src="https://code.jquery.com/jquery.js"></script>
-   <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.1.0/jquery-confirm.min.js"></script>
+
 
   
 
