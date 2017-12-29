@@ -1,6 +1,6 @@
 #coding=utf-8
 from django.contrib import admin
-from  .models import  gengyuns,zhongzi,zhishidian
+from  .models import  gengyuns,zhongzi,zhishidian,fujian
 from django.utils.translation import ugettext_lazy as _
 from datetime import date
 # Register your models here.
@@ -45,7 +45,17 @@ class DecadeBornListFilter(admin.SimpleListFilter):
         return queryset.filter(pk=6)
 
 
+#附件内联
+class fujianInline(admin.TabularInline):
+    model = fujian
 
+class zdy_fujian(admin.ModelAdmin):
+    list_display = ['id','name','upfile']
+    def upfile(self,obj):
+        return """<a href=http://zxzx.hui1983.top%s>  %s </a>""" % (obj.up_file.name[4:],obj.name)
+
+    upfile.short_description = "下载附件"
+    upfile.allow_tags = True
 
 
 
@@ -54,10 +64,12 @@ class DecadeBornListFilter(admin.SimpleListFilter):
 class zyd_zhongzi(admin.ModelAdmin):
     list_filter = [DecadeBornListFilter,]
 
-
+class zdy_zhidianshi(admin.ModelAdmin):
+    inlines = [fujianInline, ]
 
 admin.site.register(gengyuns)
 
 admin.site.register(zhongzi,zyd_zhongzi)
-admin.site.register(zhishidian)
+admin.site.register(zhishidian,zdy_zhidianshi)
 
+admin.site.register(fujian,zdy_fujian)

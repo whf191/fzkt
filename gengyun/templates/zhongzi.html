@@ -34,6 +34,10 @@
 		<div id="collapse{{i.pk}}" class="panel-collapse collapse">
 			<div class="panel-body">
 				{{i.text |safe}}
+
+
+
+
 			</div>
 		</div>
 
@@ -44,6 +48,8 @@
 	</div>
 
        {% endfor %}
+
+
 
       {% endif %}
 
@@ -103,6 +109,31 @@
 
             </div>
 -->
+<!-- 附件下载部分  -->
+
+
+<div>
+	{% if rs_zz %}
+	<h5>相关课程附件下载</h5>
+	{% for i3 in rs_zz %}
+          <p><a href=/{{  i3.up_file.name|slice:"8:"  }} >{{ i3.name }}</a></p>
+
+
+
+   {% endfor %}
+
+	{% endif %}
+
+</div>
+
+
+
+
+
+
+
+
+
 
 <!-- 分页尾部 -->
            {% if huoqu_mouye_jilu %}

@@ -130,6 +130,15 @@ def getZhiShiDian(pk):
         print e
         return False
 
+#课程附件
+def getfujian(zz):
+    l2 = []
+    for i in zz:
+        isi = i.fujian_set.all()
+        if isi:
+            for i2 in isi:
+                l2.append(i2)
+    return l2
 
 # 获取种子分页
 def sanji_gengyun(pk, limit=10):
@@ -146,6 +155,8 @@ def zhongzi_open(request):
     pk = request.GET.get("pk", None)
     if pk:
         rs_gy = getZhongziOpen(pk)
+        rs_zz = getZhiShiDian(pk)
+        rs_zz = getfujian(rs_zz)
         fenye_duixiang = sanji_gengyun(pk)
         if rs_gy:
             if not page:
@@ -158,7 +169,7 @@ def zhongzi_open(request):
                 huoqu_mouye_jilu = fenye_duixiang.page(fenye_duixiang.num_pages)  # 取最后一条记录
             return render_to_response("zhongzi.html",
                                       {"daohangtiao": daohangtiao, "rs_gy": rs_gy, "huoqu_mouye_jilu": huoqu_mouye_jilu,
-                                       'request': request})
+                                       'request': request ,'rs_zz':rs_zz})
 
     return HttpResponseRedirect("/gengyun_index/")
 

@@ -27,6 +27,19 @@ class zhongzi(models.Model):
     def __unicode__(self):
         return "{0}({1})".format(self.gengyuns_id,self.name)
 
+#附件
+class fujian(models.Model):
+    name = models.CharField(max_length=255,verbose_name="附件名称")
+    up_file =  models.FileField(upload_to="./gengyun/static/update/%Y%m%d",verbose_name="附件上传")
+    wenzhang_neirong_id = models.ForeignKey("zhishidian")
+    def __unicode__(self):
+        return "%s" % self.name
+
+    class Meta:
+        verbose_name = '上传附件'
+        verbose_name_plural = '上传附件'
+
+
 class zhishidian(models.Model):
     zhongzi_id= models.ForeignKey(zhongzi,verbose_name="二级主题",help_text="关联二级标题")
     name = models.CharField(max_length=255,verbose_name="主题")
